@@ -224,10 +224,6 @@ jQuery(document).ready(function ($) {
 		$(this).prop("disabled", true);
 	});
 
-	$(".wheel-standard").superWheel("onStart", function (results) {
-		$(".wheel-standard-spin-button").text("Spinning...");
-	});
-
 	$(".wheel-standard").superWheel("onStep", function (results) {
 		if (typeof tick.currentTime !== "undefined") tick.currentTime = 0;
 
@@ -240,8 +236,5 @@ jQuery(document).ready(function ($) {
 			title: "Congratulations!",
 			html: results.message,
 		});
-		$(".wheel-standard-spin-button:disabled")
-			.prop("disabled", false)
-			.text("Spin");
 	});
 });
