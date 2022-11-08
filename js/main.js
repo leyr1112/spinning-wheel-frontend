@@ -1,3 +1,108 @@
+const Web3Modal = window.Web3Modal.default;
+const WalletConnectProvider = window.WalletConnectProvider.default;
+
+let web3Modal, provider, selectedAccount;
+let accounts = [];
+
+function init() {
+	const providerOptions = {
+		walletconnect: {
+			package: WalletConnectProvider,
+			options: {
+				// Mikko's test key - don't copy as your mileage may vary
+				infuraId: "27e484dcd9e3efcfd25a83a78777cdf1",
+			},
+		},
+
+		fortmatic: {
+			package: Fortmatic,
+			options: {
+				// Mikko's TESTNET api key
+				key: "pk_test_A3045BC3289C81DB",
+			},
+		},
+	};
+
+	web3Modal = new Web3Modal({
+		cacheProvider: false, // optional
+		providerOptions, // required
+	});
+}
+
+async function fetchAccountData() {
+	// Get a Web3 instance for the wallet
+	const web3 = new Web3(provider);
+
+	// Get connected chain id from Ethereum node
+	const chainId = await web3.eth.getChainId();
+
+	// Get list of accounts of the connected wallet
+	accounts = await web3.eth.getAccounts();
+
+	// MetaMask does not give you all accounts, only the selected account
+	selectedAccount = accounts[0];
+	var cutAcc = selectedAccount.replace(
+		selectedAccount.substring(4, selectedAccount.length - 4),
+		"..."
+	);
+
+	$("#btn-connect").attr("onClick", "onDisconnect()");
+	$("#btn-connect").text("Disconnect");
+
+	/**
+	 * Connect wallet button pressed.
+	 */
+	async function onConnect() {
+		console.log("Opening a dialog", web3Modal);
+		try {
+			provider = await web3Modal.connect();
+		} catch (e) {
+			console.log("Could not get a wallet connection", e);
+			return;
+		}
+
+		// Subscribe to accounts change
+		provider.on("accountsChanged", (accounts) => {
+			fetchAccountData();
+		});
+
+		// Subscribe to chainId change
+		provider.on("chainChanged", (chainId) => {
+			fetchAccountData();
+		});
+
+		// Subscribe to networkId change
+		provider.on("networkChanged", (networkId) => {
+			fetchAccountData();
+		});
+
+		await fetchAccountData();
+	}
+
+	/*Disconnect button pressed*/
+	async function onDisconnect() {
+		// TODO: Which providers have close method?
+		if (provider.close) {
+			await provider.close();
+
+			// If the cached provider is not cleared,
+			// WalletConnect will default to the existing session
+			// and does not allow to re-scan the QR code with a new wallet.
+			// Depending on your use case you may want or want not his behavir.
+			await web3Modal.clearCachedProvider();
+			provider = null;
+		}
+
+		selectedAccount = null;
+		window.location.reload();
+	}
+}
+
+window.addEventListener("load", async () => {
+	init();
+	$("#btn-connect").attr("onClick", "onConnect()");
+});
+
 // Super Wheel Script
 jQuery(document).ready(function ($) {
 	$(".wheel-standard").superWheel({
@@ -140,109 +245,4 @@ jQuery(document).ready(function ($) {
 			.prop("disabled", false)
 			.text("Spin");
 	});
-});
-
-const Web3Modal = window.Web3Modal.default;
-const WalletConnectProvider = window.WalletConnectProvider.default;
-
-let web3Modal, provider, selectedAccount;
-let accounts = [];
-
-function init() {
-	const providerOptions = {
-		walletconnect: {
-			package: WalletConnectProvider,
-			options: {
-				// Mikko's test key - don't copy as your mileage may vary
-				infuraId: "27e484dcd9e3efcfd25a83a78777cdf1",
-			},
-		},
-
-		fortmatic: {
-			package: Fortmatic,
-			options: {
-				// Mikko's TESTNET api key
-				key: "pk_test_A3045BC3289C81DB",
-			},
-		},
-	};
-
-	web3Modal = new Web3Modal({
-		cacheProvider: false, // optional
-		providerOptions, // required
-	});
-}
-
-async function fetchAccountData() {
-	// Get a Web3 instance for the wallet
-	const web3 = new Web3(provider);
-
-	// Get connected chain id from Ethereum node
-	const chainId = await web3.eth.getChainId();
-
-	// Get list of accounts of the connected wallet
-	accounts = await web3.eth.getAccounts();
-
-	// MetaMask does not give you all accounts, only the selected account
-	selectedAccount = accounts[0];
-	var cutAcc = selectedAccount.replace(
-		selectedAccount.substring(4, selectedAccount.length - 4),
-		"..."
-	);
-
-	$("#btn-connect").attr("onClick", "onDisconnect()");
-	$("#btn-connect").text("Disconnect");
-
-	/**
-	 * Connect wallet button pressed.
-	 */
-	async function onConnect() {
-		console.log("Opening a dialog", web3Modal);
-		try {
-			provider = await web3Modal.connect();
-		} catch (e) {
-			console.log("Could not get a wallet connection", e);
-			return;
-		}
-
-		// Subscribe to accounts change
-		provider.on("accountsChanged", (accounts) => {
-			fetchAccountData();
-		});
-
-		// Subscribe to chainId change
-		provider.on("chainChanged", (chainId) => {
-			fetchAccountData();
-		});
-
-		// Subscribe to networkId change
-		provider.on("networkChanged", (networkId) => {
-			fetchAccountData();
-		});
-
-		await fetchAccountData();
-	}
-
-	/*Disconnect button pressed*/
-	async function onDisconnect() {
-		// TODO: Which providers have close method?
-		if (provider.close) {
-			await provider.close();
-
-			// If the cached provider is not cleared,
-			// WalletConnect will default to the existing session
-			// and does not allow to re-scan the QR code with a new wallet.
-			// Depending on your use case you may want or want not his behavir.
-			await web3Modal.clearCachedProvider();
-			provider = null;
-		}
-
-		selectedAccount = null;
-		window.location.reload();
-	}
-}
-
-window.addEventListener("load", async () => {
-	init();
-	$("#btn-connect").attr("onClick", "onConnect()");
 });
