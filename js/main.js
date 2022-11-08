@@ -143,7 +143,7 @@ jQuery(document).ready(function ($) {
 				background: "transparent",
 			},
 			{
-				text: "<div class='font-14'>80,000,000</div><img src='https://spinning-wheel-frontend.vercel.app/images/s2k.png' style='margin-left: 6px; max-width: 18%;'/>",
+				text: "<div class='font-12'>80,000,000</div><img src='https://spinning-wheel-frontend.vercel.app/images/s2k.png' style='margin-left: 6px; max-width: 18%;'/>",
 				value: 7,
 				message: "80,000,000 S2K",
 				background: "transparent",
@@ -155,7 +155,7 @@ jQuery(document).ready(function ($) {
 				background: "transparent",
 			},
 			{
-				text: "<div class='font-12'>10,000,000,000</div><img src='https://spinning-wheel-frontend.vercel.app/images/s2k.png' style='margin-left: 6px; max-width: 18%;'/>",
+				text: "<div class='font-10'>10,000,000,000</div><img src='https://spinning-wheel-frontend.vercel.app/images/s2k.png' style='margin-left: 6px; max-width: 18%;'/>",
 				value: 6,
 				message: "You win 10,000,000,000 S2K",
 				background: "transparent",
@@ -180,7 +180,7 @@ jQuery(document).ready(function ($) {
 			},
 		],
 		text: {
-			size: 16,
+			size: 14,
 			color: "#FFF",
 			offset: 4,
 		},
