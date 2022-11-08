@@ -213,7 +213,7 @@ jQuery(document).ready(function ($) {
 		width: 640,
 	});
 
-	var tick = new Audio("https://spinning-wheel-frontend.vercel.app/media/tick.mp3");
+	var tick = new Audio("https://spinning-wheel-frontend.vercel.app/images/media/tick.mp3");
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
 		$(".wheel-standard").superWheel(
@@ -221,7 +221,6 @@ jQuery(document).ready(function ($) {
 			"value",
 			Math.floor(Math.random() * 12)
 		);
-		$(this).prop("disabled", true);
 	});
 
 	$(".wheel-standard").superWheel("onStep", function (results) {
