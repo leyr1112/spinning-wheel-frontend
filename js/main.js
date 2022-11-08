@@ -201,11 +201,11 @@ jQuery(document).ready(function ($) {
 			animate: 0,
 		},
 		center: {
-			width: 20,
+			width: 22,
 			rotate: false,
 			image: {
 				url: "https://spinning-wheel-frontend.vercel.app/images/center.png",
-				width: 20,
+				width: 22,
 			},
 			class: "wheel-standard-center",
 		},
