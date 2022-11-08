@@ -48,54 +48,54 @@ async function fetchAccountData() {
 
 	$("#btn-connect").attr("onClick", "onDisconnect()");
 	$("#btn-connect").text("Disconnect");
+}
 
-	/**
+/**
 	 * Connect wallet button pressed.
 	 */
-	async function onConnect() {
-		console.log("Opening a dialog", web3Modal);
-		try {
-			provider = await web3Modal.connect();
-		} catch (e) {
-			console.log("Could not get a wallet connection", e);
-			return;
-		}
-
-		// Subscribe to accounts change
-		provider.on("accountsChanged", (accounts) => {
-			fetchAccountData();
-		});
-
-		// Subscribe to chainId change
-		provider.on("chainChanged", (chainId) => {
-			fetchAccountData();
-		});
-
-		// Subscribe to networkId change
-		provider.on("networkChanged", (networkId) => {
-			fetchAccountData();
-		});
-
-		await fetchAccountData();
+ async function onConnect() {
+	console.log("Opening a dialog", web3Modal);
+	try {
+		provider = await web3Modal.connect();
+	} catch (e) {
+		console.log("Could not get a wallet connection", e);
+		return;
 	}
 
-	/*Disconnect button pressed*/
-	async function onDisconnect() {
-		// TODO: Which providers have close method?
-		if (provider.close) {
-			await provider.close();
+	// Subscribe to accounts change
+	provider.on("accountsChanged", (accounts) => {
+		fetchAccountData();
+	});
 
-			// If the cached provider is not cleared,
-			// WalletConnect will default to the existing session
-			// and does not allow to re-scan the QR code with a new wallet.
-			// Depending on your use case you may want or want not his behavir.
-			await web3Modal.clearCachedProvider();
-			provider = null;
-		}
+	// Subscribe to chainId change
+	provider.on("chainChanged", (chainId) => {
+		fetchAccountData();
+	});
 
-		selectedAccount = null;
-		window.location.reload();
+	// Subscribe to networkId change
+	provider.on("networkChanged", (networkId) => {
+		fetchAccountData();
+	});
+
+	await fetchAccountData();
+}
+
+/*Disconnect button pressed*/
+async function onDisconnect() {
+	// TODO: Which providers have close method?
+	if (provider.close) {
+		await provider.close();
+
+		// If the cached provider is not cleared,
+		// WalletConnect will default to the existing session
+		// and does not allow to re-scan the QR code with a new wallet.
+		// Depending on your use case you may want or want not his behavir.
+		await web3Modal.clearCachedProvider();
+		provider = null;
 	}
+
+	selectedAccount = null;
+	window.location.reload();
 }
 
 window.addEventListener("load", async () => {
