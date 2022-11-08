@@ -3,10 +3,10 @@ jQuery(document).ready(function ($) {
 	$(".wheel-standard").superWheel({
 		slices: [
 			{
-				text: "<div class='font-20'>1 BTC</div><img src='images/btc.png' style='margin-left: 6px; max-width: 36%;'/>",
+				text: "<div class='font-20'>1 BTC</div><img src='images/btc-cut.png' style='margin-left: 6px; max-width: 35%;'/>",
 				value: 12,
 				message: "You win 1 BTC",
-				background: "transparent",
+				background: "#f4bc2188",
 			},
 			{
 				text: "<div>5,000,000</div><img src='images/s2k.png' style='margin-left: 6px; max-width: 18%;'/>",
