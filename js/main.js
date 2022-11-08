@@ -223,6 +223,14 @@ jQuery(document).ready(function ($) {
 		);
 	});
 
+	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
+		$(".wheel-standard").superWheel(
+			"start",
+			"value",
+			Math.floor(Math.random() * 12)
+		);
+	});
+
 	$(".wheel-standard").superWheel("onStep", function (results) {
 		if (typeof tick.currentTime !== "undefined") tick.currentTime = 0;
 
