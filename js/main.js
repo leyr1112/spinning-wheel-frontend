@@ -100,7 +100,7 @@ jQuery(document).ready(function ($) {
 			width: 24,
 			rotate: false,
 			image: {
-				url: "https://spinning-wheel-frontend.vercel.app/iamges/center.png",
+				url: "https://spinning-wheel-frontend.vercel.app/images/center.png",
 				width: 24,
 			},
 			class: "wheel-standard-center",
