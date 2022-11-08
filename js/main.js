@@ -53,7 +53,7 @@ async function fetchAccountData() {
 /**
 	 * Connect wallet button pressed.
 	 */
- async function onConnect() {
+async function onConnect() {
 	console.log("Opening a dialog", web3Modal);
 	try {
 		provider = await web3Modal.connect();
@@ -127,7 +127,7 @@ jQuery(document).ready(function ($) {
 			{
 				text: "<img src='https://spinning-wheel-frontend.vercel.app/images/jackpot.png' style='max-width: 48%;'/>",
 				value: 0,
-				message: "You win JACkPOT",
+				message: "You win JACKPOT",
 				background: "transparent",
 			},
 			{
@@ -240,8 +240,8 @@ jQuery(document).ready(function ($) {
 	$(".wheel-standard").superWheel("onComplete", function (results) {
 		swal({
 			type: "success",
-			title: "Congratulations!",
-			html: results.message,
+			title: "You Win",
+			html: results.message + '<br><b>Spin x 10 to win $12000 Jackpot</b>',
 		});
 	});
 });
