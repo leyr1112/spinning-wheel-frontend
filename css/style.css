@@ -86,10 +86,12 @@ input[type="submit"]:hover {
 .swal-button {
   padding: 7px 19px;
   border-radius: 2px;
-  background-color: #455a64;
-  font-size: 12px;
-  border: 1px solid #455a64;
+  background-color: #e3daff;
+  font-size: 14px;
+  /* border: 1px solid #e3daff; */
+  border: 0;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+  color: #8400ff;
 }
 
 .superWheel .sWheel>.sWheel-txt-wrap>.sWheel-txt>div {
@@ -149,4 +151,25 @@ input[type="submit"]:hover {
 .sWheel-inner {
   background: linear-gradient(to right, #c724cf, #f84343);
   border-radius: 50%;
+}
+
+.swal2-popup {
+  background-color: #8400ff;
+}
+
+.swal2-popup .swal2-content, .swal2-popup .swal2-content, .swal2-popup .swal2-title, .swal2-popup .swal2-footer {
+  color: #fff;
+}
+
+.swal2-icon {
+  display: none !important;
+}
+
+.swal2-popup .swal2-footer {
+  border-top: none;
+  margin: 0;
+}
+
+.swal2-popup .swal2-title {
+  margin-top: 1rem;
 }
