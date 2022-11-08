@@ -213,7 +213,7 @@ jQuery(document).ready(function ($) {
 		width: 640,
 	});
 
-	var tick = new Audio("media/tick.mp3");
+	var tick = new Audio("https://spinning-wheel-frontend.vercel.app/media/tick.mp3");
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
 		$(".wheel-standard").superWheel(
