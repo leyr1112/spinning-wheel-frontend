@@ -681,7 +681,7 @@ const WalletConnectProvider = window.WalletConnectProvider.default;
 let web3Modal, provider, selectedAccount;
 let accounts = [];
 
-var bettingContract;
+var bettingContract, busdContract;
 
 var isApproved = false;
 
@@ -758,7 +758,7 @@ async function fetchAccountData() {
 	if (chainId !== 97) {
 		swal({
 			type: "error",
-			title: "Wrong network! Switch to BSC Mainnet",
+			title: "Wrong network!<br />Switch to BSC Mainnet",
 		});
 	}
 
