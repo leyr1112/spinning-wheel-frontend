@@ -969,7 +969,7 @@ jQuery(document).ready(function ($) {
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
 		const web3 = new Web3(provider);
-		wager(web3.utils.toWei(1));
+		wager(web3.utils.toWei('1'));
 		// $(".wheel-standard").superWheel(
 		// 	"start",
 		// 	"value",
