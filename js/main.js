@@ -721,34 +721,23 @@ function refreshData() {
 	})
 }
 
-window.addEventListener('load', function () {
-	loadWeb3()
-})
-
 async function loadWeb3() {
 	if (window.ethereum) {
 		window.web3 = new Web3(window.ethereum)
 		// $('#enableMetamask').attr('disabled', false)
 		if (window.ethereum.selectedAddress !== null) {
 			await onConnect();
-			setTimeout(function () {
-				controlLoop()
-				controlLoopFaster()
-			}, 1000)
+			controlLoop();
 		}
 	} else {
 		// $('#enableMetamask').attr('disabled', true)
+		console.log('no ethereum')
 	}
 }
 
 function controlLoop() {
 	refreshData()
-	setTimeout(controlLoop, 25000)
-}
-
-function controlLoopFaster() {
-	refreshData()
-	setTimeout(controlLoopFaster, 30)
+	setTimeout(controlLoop, 1000)
 }
 
 async function fetchAccountData() {
@@ -762,7 +751,7 @@ async function fetchAccountData() {
 	if (chainId !== 97) {
 		swal({
 			type: "error",
-			title: "Wrong network! Change to BSC Mainnet",
+			title: "Wrong network! Switch to BSC Mainnet",
 		});
 	}
 
@@ -783,9 +772,6 @@ async function fetchAccountData() {
 	$("#btn-connect").text("Disconnect");
 }
 
-/**
- * Connect wallet button pressed.
- */
 async function onConnect() {
 	try {
 		provider = await web3Modal.connect();
@@ -812,7 +798,6 @@ async function onConnect() {
 	await fetchAccountData();
 }
 
-/*Disconnect button pressed*/
 async function onDisconnect() {
 	// TODO: Which providers have close method?
 	if (provider.close) {
@@ -832,6 +817,7 @@ async function onDisconnect() {
 
 window.addEventListener("load", async () => {
 	init();
+	loadWeb3();
 	$("#btn-connect").attr("onClick", "onConnect()");
 });
 
