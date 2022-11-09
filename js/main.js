@@ -836,12 +836,16 @@ function roundNum(num) {
 
 function wager(amount) {
 	bettingContract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
-		console.log(result)
-		$(".wheel-standard").superWheel(
-			"start",
-			"value",
-			Math.floor(Math.random() * 12)
-		);
+		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {	
+			const prizeId = result.prize[result.prize.length - 1]
+			$(".wheel-standard").superWheel(
+				"start",
+				"value",
+				prizeId
+			);
+		}).catch((e) => {
+			console.log(e)
+		})		
 	}).catch((e) => {
 		console.log(e)
 	});
