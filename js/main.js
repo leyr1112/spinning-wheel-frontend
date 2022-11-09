@@ -888,7 +888,7 @@ jQuery(document).ready(function ($) {
 				value: 12,
 				message:
 					"<img src='https://spinning-wheel-frontend.vercel.app/images/btc.png' style='margin-bottom: 0px; margin-right: 6px; width: 24px'/>1 BTC",
-				background: "#f4bc2188",
+				background: "transparent",
 			},
 			{
 				text: "<div>5,000,000</div><img src='https://spinning-wheel-frontend.vercel.app/images/s2k.png' style='margin-left: 6px; max-width: 18%;'/>",
