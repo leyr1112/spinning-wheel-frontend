@@ -36,6 +36,10 @@ async function fetchAccountData() {
 	// Get connected chain id from Ethereum node
 	const chainId = await web3.eth.getChainId();
 
+	if(chainId !== 56) {
+		alert('Wrong network! Change BSC Mainnet');
+	}
+
 	// Get list of accounts of the connected wallet
 	accounts = await web3.eth.getAccounts();
 
