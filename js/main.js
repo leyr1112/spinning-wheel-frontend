@@ -718,6 +718,7 @@ function refreshData() {
 	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
 		console.log(jptAmont, typeof (jptAmont));
 		const jptAmontStr = web3.utils.fromWei(jptAmont, 18);
+		console.log(jptAmontStr, typeof (jptAmontStr));
 		$('#jackpot-amount').text(roundNum(jptAmontStr));
 	}).catch((e) => {
 		console.log(e)
