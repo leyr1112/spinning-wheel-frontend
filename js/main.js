@@ -743,6 +743,7 @@ async function loadWeb3() {
 }
 
 function controlLoop() {
+	fetchAccountData()
 	refreshData()
 	setTimeout(controlLoop, 5000)
 }
