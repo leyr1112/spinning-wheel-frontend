@@ -727,6 +727,7 @@ async function loadWeb3() {
 		// $('#enableMetamask').attr('disabled', false)
 		if (window.ethereum.selectedAddress !== null) {
 			await onConnect();
+			console.log("loop")
 			controlLoop();
 		}
 	} else {
