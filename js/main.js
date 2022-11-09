@@ -680,6 +680,8 @@ const WalletConnectProvider = window.WalletConnectProvider.default;
 let web3Modal, provider, selectedAccount;
 let accounts = [];
 
+var bettingContract;
+
 function init() {
 	const providerOptions = {
 		walletconnect: {
@@ -715,6 +717,35 @@ function refreshData() {
 	contract.methods.jackpotAmount().call().then(jptAmont => {
 		console.log(jptAmont)
 	})
+}
+
+window.addEventListener('load', function () {
+    loadWeb3()
+})
+
+async function loadWeb3() {
+    if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum)
+        // $('#enableMetamask').attr('disabled', false)
+        if (window.ethereum.selectedAddress !== null) {
+            await onConnect();
+            setTimeout(function () {
+                controlLoop()
+                controlLoopFaster()
+            }, 1000)
+        }
+    } else {
+        // $('#enableMetamask').attr('disabled', true)
+    }
+}
+
+function controlLoop() {
+    refreshData()
+    setTimeout(controlLoop, 25000)
+}
+
+function controlLoopFaster() {
+    setTimeout(controlLoopFaster, 30)
 }
 
 async function fetchAccountData() {
