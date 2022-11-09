@@ -35,10 +35,11 @@ async function fetchAccountData() {
 
 	// Get connected chain id from Ethereum node
 	const chainId = await web3.eth.getChainId();
+	console.log(web3)
 
 	if(chainId !== 56) {
 		swal({
-			type: "warning",
+			type: "error",
 			title: "Wrong network! Change to BSC Mainnet",
 		});
 	}
@@ -61,7 +62,6 @@ async function fetchAccountData() {
 	 * Connect wallet button pressed.
 	 */
 async function onConnect() {
-	console.log("Opening a dialog", web3Modal);
 	try {
 		provider = await web3Modal.connect();
 	} catch (e) {
