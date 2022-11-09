@@ -708,44 +708,46 @@ function init() {
 }
 
 function loadContracts() {
-    web3 = window.web3
-    bettingContract = new web3.eth.Contract(bettingABI, bettingAddress);
+	web3 = window.web3
+	bettingContract = new web3.eth.Contract(bettingABI, bettingAddress);
 	console.log(bettingContract)
 }
 
 function refreshData() {
 	contract.methods.jackpotAmount().call().then(jptAmont => {
 		console.log(jptAmont)
+	}).catch((e) => {
+		console.log(e)
 	})
 }
 
 window.addEventListener('load', function () {
-    loadWeb3()
+	loadWeb3()
 })
 
 async function loadWeb3() {
-    if (window.ethereum) {
-        window.web3 = new Web3(window.ethereum)
-        // $('#enableMetamask').attr('disabled', false)
-        if (window.ethereum.selectedAddress !== null) {
-            await onConnect();
-            setTimeout(function () {
-                controlLoop()
-                controlLoopFaster()
-            }, 1000)
-        }
-    } else {
-        // $('#enableMetamask').attr('disabled', true)
-    }
+	if (window.ethereum) {
+		window.web3 = new Web3(window.ethereum)
+		// $('#enableMetamask').attr('disabled', false)
+		if (window.ethereum.selectedAddress !== null) {
+			await onConnect();
+			setTimeout(function () {
+				controlLoop()
+				controlLoopFaster()
+			}, 1000)
+		}
+	} else {
+		// $('#enableMetamask').attr('disabled', true)
+	}
 }
 
 function controlLoop() {
-    refreshData()
-    setTimeout(controlLoop, 25000)
+	refreshData()
+	setTimeout(controlLoop, 25000)
 }
 
 function controlLoopFaster() {
-    setTimeout(controlLoopFaster, 30)
+	setTimeout(controlLoopFaster, 30)
 }
 
 async function fetchAccountData() {
