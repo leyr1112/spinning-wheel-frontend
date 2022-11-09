@@ -723,13 +723,6 @@ function refreshData() {
 	}).catch((e) => {
 		console.log(e)
 	})
-
-	bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {	
-		const prizeId = result.prize[result.prize.length - 1]
-		console.log(prizeId, typeof(prizeId))
-	}).catch((e) => {
-		console.log(e)
-	})	
 }
 
 async function loadWeb3() {
@@ -848,7 +841,7 @@ function wager(amount) {
 			$(".wheel-standard").superWheel(
 				"start",
 				"value",
-				prizeId
+				Number(prizeId)
 			);
 		}).catch((e) => {
 			console.log(e)
