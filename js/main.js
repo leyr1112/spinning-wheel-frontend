@@ -884,7 +884,7 @@ jQuery(document).ready(function ($) {
 	$(".wheel-standard").superWheel({
 		slices: [
 			{
-				text: "<div class='font-20'>1 BTC</div><img src='https://spinning-wheel-frontend.vercel.app/images/btc-cut.png' style='margin-left: 6px; max-width: 35%;'/>",
+				text: "<div class='font-20'>1 BTC</div><img src='https://spinning-wheel-frontend.vercel.app/images/btc.png' style='margin-left: 6px; max-width: 18%;'/>",
 				value: 12,
 				message:
 					"<img src='https://spinning-wheel-frontend.vercel.app/images/btc.png' style='margin-bottom: 0px; margin-right: 6px; width: 24px'/>1 BTC",

@@ -100,9 +100,9 @@ input[type="submit"]:hover {
   justify-content: flex-end;
 }
 
-.superWheel .sWheel>.sWheel-txt-wrap>.sWheel-txt>div:first-child {
+/* .superWheel .sWheel>.sWheel-txt-wrap>.sWheel-txt>div:first-child {
   padding-right: 0% !important;
-}
+} */
 
 .wheel-standard {
   background-image: url(https://spinning-wheel-frontend.vercel.app/images/table.gif);
