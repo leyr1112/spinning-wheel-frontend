@@ -835,7 +835,7 @@ function roundNum(num) {
 }
 
 function wager(amount) {
-	contract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
+	bettingContract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
 		console.log(result)
 	}).catch((e) => {
 		console.log(e)
