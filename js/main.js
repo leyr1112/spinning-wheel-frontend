@@ -715,7 +715,7 @@ function loadContracts() {
 
 function refreshData() {
 	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
-		console.log(jptAmont)
+		console.log(jptAmont, typeof(jptAmont))
 	}).catch((e) => {
 		console.log(e)
 	})
