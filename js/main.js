@@ -717,9 +717,9 @@ function refreshData() {
 	const web3 = new Web3(provider);
 	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
 		console.log(jptAmont, typeof (jptAmont));
-		const jptAmontStr = web3.utils.fromWei(jptAmont, 18);
+		const jptAmontStr = web3.utils.fromWei(jptAmont);
 		console.log(jptAmontStr, typeof (jptAmontStr));
-		$('#jackpot-amount').text(roundNum(jptAmontStr));
+		$('#jackpot-amount').text(roundNum(jptAmontStr) + " BUSD");
 	}).catch((e) => {
 		console.log(e)
 	})
