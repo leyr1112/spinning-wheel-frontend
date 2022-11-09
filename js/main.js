@@ -726,7 +726,7 @@ function refreshData() {
 
 	bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {	
 		const prizeId = result.prize[result.prize.length - 1]
-		console.log(prizeId)
+		console.log(prizeId, typeof(prizeId))
 	}).catch((e) => {
 		console.log(e)
 	})	
