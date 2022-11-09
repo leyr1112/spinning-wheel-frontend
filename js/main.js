@@ -37,7 +37,10 @@ async function fetchAccountData() {
 	const chainId = await web3.eth.getChainId();
 
 	if(chainId !== 56) {
-		alert('Wrong network! Change BSC Mainnet');
+		swal({
+			type: "warning",
+			title: "Wrong network! Change to BSC Mainnet",
+		});
 	}
 
 	// Get list of accounts of the connected wallet
