@@ -742,7 +742,7 @@ async function loadWeb3() {
 
 function controlLoop() {
 	refreshData()
-	setTimeout(controlLoop, 1000)
+	setTimeout(controlLoop, 5000)
 }
 
 async function fetchAccountData() {
@@ -832,6 +832,14 @@ function roundNum(num) {
 		return parseFloat(num).toFixed(4);
 	}
 	return parseFloat(parseFloat(num).toFixed(2));
+}
+
+function wager(amount) {
+	contract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
+		console.log(result)
+	}).catch((e) => {
+		console.log(e)
+	});
 }
 
 jQuery(document).ready(function ($) {
@@ -960,11 +968,13 @@ jQuery(document).ready(function ($) {
 	);
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
-		$(".wheel-standard").superWheel(
-			"start",
-			"value",
-			Math.floor(Math.random() * 12)
-		);
+		const web3 = new Web3(provider);
+		wager(web3.utils.toWei(1));
+		// $(".wheel-standard").superWheel(
+		// 	"start",
+		// 	"value",
+		// 	Math.floor(Math.random() * 12)
+		// );
 	});
 
 	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
