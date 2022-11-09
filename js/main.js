@@ -726,6 +726,22 @@ function refreshData() {
 	}).catch((e) => {
 		console.log(e)
 	})
+
+	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
+		console.log(result)
+		const resultStr = web3.utils.fromWei(result)
+		isApproved = Number(resultStr) > 0
+		if (isApproved) {
+			$("#spin-text").text("SPIN");
+			$("#spin-text-10").text("SPIN X 10");
+		}
+		else {
+			$("#spin-text").text("APPROVE");
+			$("#spin-text-10").text("APPROVE");
+		}
+	}).catch((e) => {
+		console.log(e)
+	})
 }
 
 async function loadWeb3() {
@@ -772,22 +788,6 @@ async function fetchAccountData() {
 		selectedAccount.substring(4, selectedAccount.length - 4),
 		"..."
 	);
-
-	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
-		console.log(result)
-		const resultStr = web3.utils.fromWei(result)
-		isApproved = Number(resultStr) > 0
-		if (isApproved) {
-			$("#spin-text").text("SPIN");
-			$("#spin-text-10").text("SPIN X 10");
-		}
-		else {
-			$("#spin-text").text("APPROVE");
-			$("#spin-text-10").text("APPROVE");
-		}
-	}).catch((e) => {
-		console.log(e)
-	})
 
 	loadContracts();
 	refreshData();
