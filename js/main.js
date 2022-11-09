@@ -714,7 +714,7 @@ function loadContracts() {
 }
 
 function refreshData() {
-	contract.methods.jackpotAmount().call().then(jptAmont => {
+	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
 		console.log(jptAmont)
 	}).catch((e) => {
 		console.log(e)
