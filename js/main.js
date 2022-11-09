@@ -673,6 +673,7 @@ const bettingABI = [
 ];
 
 const bettingAddress = "0x940AEda54F74fD8523216dA3E537F2aF0499C07B";
+const busdAddress = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";
 
 const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
@@ -681,6 +682,8 @@ let web3Modal, provider, selectedAccount;
 let accounts = [];
 
 var bettingContract;
+
+var isApproved = false;
 
 function init() {
 	const providerOptions = {
@@ -710,7 +713,7 @@ function init() {
 function loadContracts() {
 	web3 = window.web3
 	bettingContract = new web3.eth.Contract(bettingABI, bettingAddress);
-	console.log(bettingContract)
+	busdContract = new web3.eth.Contract(bep20ABI, busdAddress);
 }
 
 function refreshData() {
@@ -769,6 +772,15 @@ async function fetchAccountData() {
 		selectedAccount.substring(4, selectedAccount.length - 4),
 		"..."
 	);
+
+	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
+		console.log(result)
+		const resultStr = web3.utils.fromWei(result)
+		isApproved = Number(resultStr) > 0
+		
+	}).catch((e) => {
+		console.log(e)
+	})
 
 	loadContracts();
 	refreshData();
@@ -836,7 +848,7 @@ function roundNum(num) {
 
 function wager(amount) {
 	bettingContract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
-		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {	
+		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
 			const prizeId = result.prize[result.prize.length - 1]
 			$(".wheel-standard").superWheel(
 				"start",
@@ -845,10 +857,18 @@ function wager(amount) {
 			);
 		}).catch((e) => {
 			console.log(e)
-		})		
+		})
 	}).catch((e) => {
 		console.log(e)
 	});
+}
+
+function approve() {
+	busdContract.methods.approve(bettingAddress, 1000000000000000000000000000000000000000).send({ from: selectedAccount }).then(result => {
+		console.log(result);
+	}).catch((e) => {
+		console.log(e)
+	})
 }
 
 jQuery(document).ready(function ($) {
@@ -978,12 +998,22 @@ jQuery(document).ready(function ($) {
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
 		const web3 = new Web3(provider);
-		wager(web3.utils.toWei('1'));
+		if(isApproved) {
+			wager(web3.utils.toWei('1'));
+		}
+		else {
+			approve()
+		}
 	});
 
 	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
 		const web3 = new Web3(provider);
-		wager(web3.utils.toWei('10'));
+		if(isApproved) {
+			wager(web3.utils.toWei('10'));
+		}
+		else {
+			approve()
+		}
 	});
 
 	$(".wheel-standard").superWheel("onStep", function (results) {
