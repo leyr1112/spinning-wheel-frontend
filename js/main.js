@@ -837,6 +837,11 @@ function roundNum(num) {
 function wager(amount) {
 	bettingContract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
 		console.log(result)
+		$(".wheel-standard").superWheel(
+			"start",
+			"value",
+			Math.floor(Math.random() * 12)
+		);
 	}).catch((e) => {
 		console.log(e)
 	});
@@ -970,11 +975,6 @@ jQuery(document).ready(function ($) {
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
 		const web3 = new Web3(provider);
 		wager(web3.utils.toWei('1'));
-		// $(".wheel-standard").superWheel(
-		// 	"start",
-		// 	"value",
-		// 	Math.floor(Math.random() * 12)
-		// );
 	});
 
 	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
