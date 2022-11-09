@@ -734,7 +734,6 @@ async function loadWeb3() {
 		// $('#enableMetamask').attr('disabled', false)
 		if (window.ethereum.selectedAddress !== null) {
 			await onConnect();
-			console.log("loop")
 			controlLoop();
 		}
 	} else {
@@ -777,7 +776,14 @@ async function fetchAccountData() {
 		console.log(result)
 		const resultStr = web3.utils.fromWei(result)
 		isApproved = Number(resultStr) > 0
-		
+		if (isApproved) {
+			$("#spin-text").text("SPIN");
+			$("#spin-text-10").text("SPIN X 10");
+		}
+		else {
+			$("#spin-text").text("APPROVE");
+			$("#spin-text-10").text("APPROVE");
+		}
 	}).catch((e) => {
 		console.log(e)
 	})
@@ -866,6 +872,8 @@ function wager(amount) {
 function approve() {
 	busdContract.methods.approve(bettingAddress, 1000000000000000000000000000000000000000).send({ from: selectedAccount }).then(result => {
 		console.log(result);
+		$("#spin-text").text("SPIN");
+		$("#spin-text-10").text("SPIN X 10");
 	}).catch((e) => {
 		console.log(e)
 	})
@@ -998,7 +1006,7 @@ jQuery(document).ready(function ($) {
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
 		const web3 = new Web3(provider);
-		if(isApproved) {
+		if (isApproved) {
 			wager(web3.utils.toWei('1'));
 		}
 		else {
@@ -1008,7 +1016,7 @@ jQuery(document).ready(function ($) {
 
 	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
 		const web3 = new Web3(provider);
-		if(isApproved) {
+		if (isApproved) {
 			wager(web3.utils.toWei('10'));
 		}
 		else {
