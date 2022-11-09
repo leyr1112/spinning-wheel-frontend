@@ -747,6 +747,7 @@ function controlLoop() {
 }
 
 function controlLoopFaster() {
+	refreshData()
 	setTimeout(controlLoopFaster, 30)
 }
 
