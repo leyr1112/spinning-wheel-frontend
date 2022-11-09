@@ -871,7 +871,7 @@ function wager(amount) {
 }
 
 function approve() {
-	busdContract.methods.approve(bettingAddress, 1000000000000000000000000000000000000000).send({ from: selectedAccount }).then(result => {
+	busdContract.methods.approve(bettingAddress, '1000000000000000000000000000000000000000').send({ from: selectedAccount }).then(result => {
 		console.log(result);
 		$("#spin-text").text("SPIN");
 		$("#spin-text-10").text("SPIN X 10");
