@@ -714,8 +714,11 @@ function loadContracts() {
 }
 
 function refreshData() {
+	const web3 = new Web3(provider);
 	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
-		console.log(jptAmont, typeof(jptAmont))
+		console.log(jptAmont, typeof (jptAmont));
+		const jptAmontStr = web3.utils.fromEther(jptAmont);
+		$('#jackpot-amount').text(roundNum(jptAmontStr));
 	}).catch((e) => {
 		console.log(e)
 	})
@@ -821,6 +824,14 @@ window.addEventListener("load", async () => {
 	loadWeb3();
 	$("#btn-connect").attr("onClick", "onConnect()");
 });
+
+function roundNum(num) {
+	if (num == 0) { return 0 };
+	if (num < 1) {
+		return parseFloat(num).toFixed(4);
+	}
+	return parseFloat(parseFloat(num).toFixed(2));
+}
 
 jQuery(document).ready(function ($) {
 	$(".wheel-standard").superWheel({
