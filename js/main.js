@@ -1044,7 +1044,7 @@ jQuery(document).ready(function ($) {
 	$(".wheel-standard").superWheel("onComplete", function (results) {
 		swal({
 			type: "success",
-			title: "<span style='font-size: 72px'>You Win</span>",
+			title: "You Win",
 			html: '<b>' + results.message + '</b>',
 			confirmButtonText: "SPIN AGAIN",
 			footer:

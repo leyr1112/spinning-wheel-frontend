@@ -204,3 +204,7 @@ input[type="submit"]:hover {
 .swal2-popup .swal2-footer {
   border-top: none;
 }
+
+.swal2-popup .swal2-title {
+  font-size: 72px;
+}
