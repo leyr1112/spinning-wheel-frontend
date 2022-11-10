@@ -731,14 +731,14 @@ function refreshData() {
 		console.log(result)
 		const resultStr = web3.utils.fromWei(result)
 		isApproved = Number(resultStr) > 0
-		if (isApproved) {
-			$("#spin-text").text("SPIN");
-			$("#spin-text-10").text("SPIN X 10");
-		}
-		else {
-			$("#spin-text").text("APPROVE");
-			$("#spin-text-10").text("APPROVE");
-		}
+		// if (isApproved) {
+		// 	$("#spin-text").text("SPIN");
+		// 	$("#spin-text-10").text("SPIN X 10");
+		// }
+		// else {
+		// 	$("#spin-text").text("APPROVE");
+		// 	$("#spin-text-10").text("APPROVE");
+		// }
 	}).catch((e) => {
 		console.log(e)
 	})
@@ -1006,23 +1006,33 @@ jQuery(document).ready(function ($) {
 	);
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
-		const web3 = new Web3(provider);
-		if (isApproved) {
-			wager(web3.utils.toWei('1'));
-		}
-		else {
-			approve()
-		}
+		// const web3 = new Web3(provider);
+		// if (isApproved) {
+		// 	wager(web3.utils.toWei('1'));
+		// }
+		// else {
+		// 	approve()
+		// }
+		$(".wheel-standard").superWheel(
+			"start",
+			"value",
+			Math.floor(Math.random() * 12)
+		);
 	});
 
 	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
-		const web3 = new Web3(provider);
-		if (isApproved) {
-			wager(web3.utils.toWei('10'));
-		}
-		else {
-			approve()
-		}
+		// const web3 = new Web3(provider);
+		// if (isApproved) {
+		// 	wager(web3.utils.toWei('10'));
+		// }
+		// else {
+		// 	approve()
+		// }
+		$(".wheel-standard").superWheel(
+			"start",
+			"value",
+			Math.floor(Math.random() * 12)
+		);
 	});
 
 	$(".wheel-standard").superWheel("onStep", function (results) {
