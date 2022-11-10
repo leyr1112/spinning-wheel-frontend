@@ -718,14 +718,14 @@ function loadContracts() {
 
 function refreshData() {
 	const web3 = new Web3(provider);
-	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
-		console.log(jptAmont, typeof (jptAmont));
-		const jptAmontStr = web3.utils.fromWei(jptAmont);
-		console.log(jptAmontStr, typeof (jptAmontStr));
-		$('#jackpot-amount').text(roundNum(jptAmontStr) + " BUSD");
-	}).catch((e) => {
-		console.log(e)
-	})
+	// bettingContract.methods.jackpotAmount().call().then(jptAmont => {
+	// 	console.log(jptAmont, typeof (jptAmont));
+	// 	const jptAmontStr = web3.utils.fromWei(jptAmont);
+	// 	console.log(jptAmontStr, typeof (jptAmontStr));
+	// 	$('#jackpot-amount').text(roundNum(jptAmontStr) + " BUSD");
+	// }).catch((e) => {
+	// 	console.log(e)
+	// })
 
 	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
 		console.log(result)
