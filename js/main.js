@@ -672,8 +672,8 @@ const bettingABI = [
 	},
 ];
 
-const bettingAddress = "0x940AEda54F74fD8523216dA3E537F2aF0499C07B";
-const busdAddress = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";
+const bettingAddress = "0x7e8B040dCf208D203ca3AaB6A776A51413d9E4EB";
+const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
 
 const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
