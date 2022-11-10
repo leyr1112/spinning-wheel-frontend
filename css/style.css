@@ -87,7 +87,7 @@ input[type="submit"]:hover {
   padding: 7px 19px;
   border-radius: 2px;
   background-color: #e3daff;
-  font-size: 14px;
+  font-size: 18px;
   /* border: 1px solid #e3daff; */
   border: 0;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
@@ -175,7 +175,10 @@ input[type="submit"]:hover {
 }
 
 .swal2-popup {
-  background-color: #8400ff;
+  background: #340065;
+  background-image: url(../images/modal-background.png);
+  background-image: url(../images/modal-background.png), radial-gradient(circle farthest-corner at 50% 50%, #000, #340065 72%);
+  background-size: cover;
 }
 
 .swal2-popup .swal2-content,
@@ -185,15 +188,14 @@ input[type="submit"]:hover {
   color: #fff;
 }
 
+.swal2-popup .swal2-title, .swal2-popup .swal2-footer {
+  margin: 24px 0;
+}
+
 .swal2-icon {
   display: none !important;
 }
 
 .swal2-popup .swal2-footer {
   border-top: none;
-  margin: 0;
-}
-
-.swal2-popup .swal2-title {
-  margin-top: 1rem;
 }
