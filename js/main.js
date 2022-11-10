@@ -998,7 +998,7 @@ jQuery(document).ready(function ($) {
 			class: "wheel-standard-center",
 		},
 		selector: "value",
-		width: 600,
+		width: 640,
 	});
 
 	var tick = new Audio(
