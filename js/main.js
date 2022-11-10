@@ -719,16 +719,13 @@ function loadContracts() {
 function refreshData() {
 	const web3 = new Web3(provider);
 	// bettingContract.methods.jackpotAmount().call().then(jptAmont => {
-	// 	console.log(jptAmont, typeof (jptAmont));
 	// 	const jptAmontStr = web3.utils.fromWei(jptAmont);
-	// 	console.log(jptAmontStr, typeof (jptAmontStr));
 	// 	$('#jackpot-amount').text(roundNum(jptAmontStr) + " BUSD");
 	// }).catch((e) => {
 	// 	console.log(e)
 	// })
 
 	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
-		console.log(result)
 		const resultStr = web3.utils.fromWei(result)
 		isApproved = Number(resultStr) > 0
 		// if (isApproved) {
@@ -770,7 +767,6 @@ async function fetchAccountData() {
 
 	// Get connected chain id from Ethereum node
 	const chainId = await web3.eth.getChainId();
-	console.log(web3);
 
 	if (chainId !== 56) {
 		swal({
@@ -872,7 +868,6 @@ function wager(amount) {
 
 function approve() {
 	busdContract.methods.approve(bettingAddress, '1000000000000000000000000000000000000000').send({ from: selectedAccount }).then(result => {
-		console.log(result);
 		$("#spin-text").text("SPIN");
 		$("#spin-text-10").text("SPIN X 10");
 	}).catch((e) => {
