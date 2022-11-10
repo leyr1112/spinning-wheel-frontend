@@ -672,8 +672,8 @@ const bettingABI = [
 	},
 ];
 
-const bettingAddress = "0x7e8B040dCf208D203ca3AaB6A776A51413d9E4EB";
-const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
+const bettingAddress = "0x7CAA8679CF501D986a68ABF90B9b34880973eC12";
+const busdAddress = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";
 
 const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
@@ -772,10 +772,10 @@ async function fetchAccountData() {
 	const chainId = await web3.eth.getChainId();
 	console.log(web3);
 
-	if (chainId !== 56) {
+	if (chainId !== 97) {
 		swal({
 			type: "error",
-			title: "Wrong network!<br />Switch to BSC Mainnet",
+			title: "Wrong network!<br />Switch to BSC Testnet",
 		});
 	}
 
