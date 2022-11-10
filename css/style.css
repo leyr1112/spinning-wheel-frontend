@@ -171,6 +171,7 @@ input[type="submit"]:hover {
 .sWheel-inner {
   background: linear-gradient(to right, #c724cf, #f84343);
   border-radius: 50%;
+  box-shadow: inset 0 0px 22px 11px #000;
 }
 
 .swal2-popup {
