@@ -188,8 +188,13 @@ input[type="submit"]:hover {
   color: #fff;
 }
 
-.swal2-popup .swal2-title, .swal2-popup .swal2-footer {
+.swal2-popup .swal2-title {
   margin: 24px 0;
+}
+
+.swal2-popup .swal2-footer {
+  margin: 0;
+  margin-bottom: 24px;
 }
 
 .swal2-icon {
