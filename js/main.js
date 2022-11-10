@@ -974,15 +974,15 @@ jQuery(document).ready(function ($) {
 		},
 		line: {
 			width: 6,
-			color: "#020101",
+			color: "#202020",
 		},
 		outer: {
 			width: 8,
-			color: "#020101",
+			color: "#202020",
 		},
 		inner: {
 			width: 8,
-			color: "#020101",
+			color: "#202020",
 		},
 		marker: {
 			background: "#00BCD4",
