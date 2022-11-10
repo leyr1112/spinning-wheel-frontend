@@ -772,7 +772,7 @@ async function fetchAccountData() {
 	const chainId = await web3.eth.getChainId();
 	console.log(web3);
 
-	if (chainId !== 97) {
+	if (chainId !== 56) {
 		swal({
 			type: "error",
 			title: "Wrong network!<br />Switch to BSC Mainnet",
