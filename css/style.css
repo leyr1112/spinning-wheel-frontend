@@ -106,13 +106,15 @@ input[type="submit"]:hover {
 
 .wheel-standard {
   background-image: url(https://spinning-wheel-frontend.vercel.app/images/table.gif);
-  background-size: cover;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: center;
   margin: 0;
 }
-
+/* 
 .sWheel-marker {
   display: none !important;
-}
+} */
 
 .font-20 {
   font-size: 20px;
