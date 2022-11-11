@@ -786,7 +786,8 @@ function refreshData() {
 	})
 
 	bettingContract.methods.getHistoryLength().call().then(length => {
-		for (let index = length; index > length - 5; index--) {
+		const historyLength = length - 5 < 0 ? 0 : length - 5
+		for (let index = length; index > historyLength; index--) {
 			bettingContract.methods.prizeHistory(index - 1).call().then(historyData => {
 				history.pushState(historyData);
 			}).catch((e) => {
