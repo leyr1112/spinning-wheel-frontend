@@ -793,7 +793,7 @@ function refreshData() {
 		else {
 			for (let index = 1; index < 6; index++) {
 				$('#history' + index).css('display', 'none');
-				if (index <= length) {
+				if (index > length) {
 					continue;
 				}
 				bettingContract.methods.prizeHistory(length - index).call().then(historyData => {
