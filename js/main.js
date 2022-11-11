@@ -727,6 +727,7 @@ var bettingContract, busdContract;
 
 var isApproved = false;
 var history = [];
+var isDomoMode = false;
 
 function init() {
 	const providerOptions = {
@@ -793,27 +794,27 @@ function refreshData() {
 				$('#history' + index).find('.history-user').text(historyData.user);
 				const amountStr = web3.utils.fromWei(historyData.amount);
 				const tokenAddress = historyData.rewardToken;
-				if(tokenAddress == '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c') {
+				if (tokenAddress == '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c') {
 					$('#history' + index).find('.coin-image').attr('src', "<img src='https://spinning-wheel-frontend.vercel.app/images/btc.png")
 					$('#history' + index).find('.history-prize').text(amountStr + ' BTC');
 				}
-				else if(tokenAddress == '0x2170Ed0880ac9A755fd29B2688956BD959F933F8') {
+				else if (tokenAddress == '0x2170Ed0880ac9A755fd29B2688956BD959F933F8') {
 					$('#history' + index).find('.coin-image').attr('src', "<img src='https://spinning-wheel-frontend.vercel.app/images/eth.png")
 					$('#history' + index).find('.history-prize').text(amountStr + ' ETH');
 				}
-				else if(tokenAddress == '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c') {
+				else if (tokenAddress == '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c') {
 					$('#history' + index).find('.coin-image').attr('src', "<img src='https://spinning-wheel-frontend.vercel.app/images/bnb.png")
 					$('#history' + index).find('.history-prize').text(amountStr + ' BNB');
 				}
-				else if(tokenAddress == '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56') {
+				else if (tokenAddress == '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56') {
 					$('#history' + index).find('.coin-image').attr('src', "<img src='https://spinning-wheel-frontend.vercel.app/images/busd.png")
 					$('#history' + index).find('.history-prize').text(amountStr + ' BUSD');
 				}
-				else if(tokenAddress == '0xbA2aE424d960c26247Dd6c32edC70B295c744C43') {
+				else if (tokenAddress == '0xbA2aE424d960c26247Dd6c32edC70B295c744C43') {
 					$('#history' + index).find('.coin-image').attr('src', "<img src='https://spinning-wheel-frontend.vercel.app/images/doge.png")
 					$('#history' + index).find('.history-prize').text(amountStr + ' DOGE');
 				}
-				else if(tokenAddress == '0x42bfa18f3f7D82BD7240d8Ce5935d51679C5115d') {
+				else if (tokenAddress == '0x42bfa18f3f7D82BD7240d8Ce5935d51679C5115d') {
 					$('#history' + index).find('.coin-image').attr('src', "<img src='https://spinning-wheel-frontend.vercel.app/images/s2k.png")
 					$('#history' + index).find('.history-prize').text(amountStr + ' S2K');
 				}
@@ -1124,5 +1125,15 @@ jQuery(document).ready(function ($) {
 			footer:
 				"<b>Spin x 10 to win <span style='color: #ff931e;'>$12000</span> Jackpot</b>",
 		});
+	});
+
+	$(document).on("click", "#demo-on-btn", function (e) {
+		isDomoMode = true;
+		$("#demo-on-btn").css('background-color', '#ff931e');
+	});
+
+	$(document).on("click", "#demo-off-btn", function (e) {
+		isDomoMode = false;
+		$("#demo-off-btn").css('background-color', '#ff931e');
 	});
 });
