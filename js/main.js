@@ -1018,11 +1018,6 @@ jQuery(document).ready(function ($) {
 		else {
 			approve()
 		}
-		$(".wheel-standard").superWheel(
-			"start",
-			"value",
-			Math.floor(Math.random() * 12)
-		);
 	});
 
 	$(".wheel-standard").superWheel("onStep", function (results) {
