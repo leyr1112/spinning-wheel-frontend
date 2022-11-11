@@ -787,6 +787,9 @@ function refreshData() {
 	})
 
 	bettingContract.methods.getHistoryLength().call().then(length => {
+		if(isDomoMode) {
+			return;
+		}
 		$('.history-list').css('display', 'flex')
 		for (let index = 1; index < length; index++) {
 			bettingContract.methods.prizeHistory(length - 1).call().then(historyData => {
