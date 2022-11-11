@@ -109,7 +109,7 @@ input[type="submit"]:hover {
   /* background-size: cover; */
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0;
+  margin: auto !important;
   background-size: 102%;
   background-position-y: 44%;
 }
