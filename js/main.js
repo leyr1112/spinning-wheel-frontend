@@ -1008,11 +1008,6 @@ jQuery(document).ready(function ($) {
 		else {
 			approve()
 		}
-		$(".wheel-standard").superWheel(
-			"start",
-			"value",
-			Math.floor(Math.random() * 12)
-		);
 	});
 
 	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
