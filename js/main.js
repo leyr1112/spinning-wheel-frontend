@@ -786,10 +786,9 @@ function refreshData() {
 	})
 
 	bettingContract.methods.getHistoryLength().call().then(length => {
-		$('.history-list').css('display', 'none')
+		$('.history-list').css('display', 'block')
 		for (let index = 1; index < length; index++) {
 			bettingContract.methods.prizeHistory(length - 1).call().then(historyData => {
-				history.pushState(historyData);
 				$('#history' + index).css('display', 'block');
 				$('#history' + index).find('.history-user').text(historyData.user);
 				const amountStr = web3.utils.fromWei(historyData.amount);
@@ -829,8 +828,6 @@ function refreshData() {
 	}).catch((e) => {
 		console.log(e)
 	})
-
-	console.log(history)
 }
 
 async function loadWeb3() {
