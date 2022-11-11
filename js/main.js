@@ -726,6 +726,7 @@ let accounts = [];
 var bettingContract, busdContract;
 
 var isApproved = false;
+var history = [];
 
 function init() {
 	const providerOptions = {
@@ -759,13 +760,8 @@ function loadContracts() {
 }
 
 function refreshData() {
+
 	const web3 = new Web3(provider);
-	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
-		const jptAmontStr = web3.utils.fromWei(jptAmont);
-		$('#jackpot-amount').text(roundNum(jptAmontStr) + " BUSD");
-	}).catch((e) => {
-		console.log(e)
-	})
 
 	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
 		const resultStr = web3.utils.fromWei(result)
@@ -781,6 +777,27 @@ function refreshData() {
 	}).catch((e) => {
 		console.log(e)
 	})
+
+	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
+		const jptAmontStr = web3.utils.fromWei(jptAmont);
+		$('#jackpot-amount').text(roundNum(jptAmontStr) + " BUSD");
+	}).catch((e) => {
+		console.log(e)
+	})
+
+	bettingContract.methods.getHistoryLength().call().then(length => {
+		for (let index = length; index > length - 5; index--) {
+			bettingContract.methods.jackpotAmount(index - 1).call().then(historyData => {
+				history.pushState(historyData);
+			}).catch((e) => {
+				console.log(e)
+			})
+		}
+	}).catch((e) => {
+		console.log(e)
+	})
+
+	console.log(history)
 }
 
 async function loadWeb3() {
