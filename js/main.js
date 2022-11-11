@@ -767,7 +767,7 @@ function refreshData() {
 	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
 		const resultStr = web3.utils.fromWei(result)
 		isApproved = Number(resultStr) > 0
-		if (isApproved) {
+		if (isApproved || isDomoMode) {
 			$("#spin-text").text("SPIN");
 			$("#spin-text-10").text("SPIN X 10");
 		}
@@ -793,7 +793,7 @@ function refreshData() {
 		else {
 			for (let index = 1; index < 6; index++) {
 				$('#history' + index).css('display', 'none');
-				if(index <= length) {
+				if (index <= length) {
 					continue;
 				}
 				bettingContract.methods.prizeHistory(length - index).call().then(historyData => {
@@ -1101,21 +1101,39 @@ jQuery(document).ready(function ($) {
 
 	$(document).on("click", ".wheel-standard-spin-button", function (e) {
 		const web3 = new Web3(provider);
-		if (isApproved) {
-			wager(web3.utils.toWei('1'));
+		if (isDomoMode) {
+			$(".wheel-standard").superWheel(
+				"start",
+				"value",
+				Math.floor(Math.random() * 12)
+			);
 		}
 		else {
-			approve()
+			if (isApproved) {
+				wager(web3.utils.toWei('1'));
+			}
+			else {
+				approve()
+			}
 		}
 	});
 
 	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
 		const web3 = new Web3(provider);
-		if (isApproved) {
-			wager(web3.utils.toWei('10'));
+		if (isDomoMode) {
+			$(".wheel-standard").superWheel(
+				"start",
+				"value",
+				Math.floor(Math.random() * 12)
+			);
 		}
 		else {
-			approve()
+			if (isApproved) {
+				wager(web3.utils.toWei('10'));
+			}
+			else {
+				approve()
+			}
 		}
 	});
 
