@@ -775,10 +775,10 @@ function refreshData() {
 			$("#spin-text").text("APPROVE");
 			$("#spin-text-10").text("APPROVE");
 		}
-		if (isDomoMode) {
-			$("#spin-text").text("SPIN");
-			$("#spin-text-10").text("SPIN X 10");
-		}
+		// if (isDomoMode) {
+		// 	$("#spin-text").text("SPIN");
+		// 	$("#spin-text-10").text("SPIN X 10");
+		// }
 	}).catch((e) => {
 		console.log(e)
 	})
