@@ -787,10 +787,10 @@ function refreshData() {
 	})
 
 	bettingContract.methods.getHistoryLength().call().then(length => {
-		$('.history-list').css('display', 'block')
+		$('.history-list').css('display', 'flex')
 		for (let index = 1; index < length; index++) {
 			bettingContract.methods.prizeHistory(length - 1).call().then(historyData => {
-				$('#history' + index).css('display', 'block');
+				$('#history' + index).css('display', 'flex');
 				$('#history' + index).find('.history-user').text(historyData.user);
 				const amountStr = web3.utils.fromWei(historyData.amount);
 				const tokenAddress = historyData.rewardToken;
