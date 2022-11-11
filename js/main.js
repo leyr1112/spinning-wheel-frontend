@@ -767,13 +767,17 @@ function refreshData() {
 	busdContract.methods.allowance(selectedAccount, bettingAddress).call().then(result => {
 		const resultStr = web3.utils.fromWei(result)
 		isApproved = Number(resultStr) > 0
-		if (isApproved || isDomoMode) {
+		if (isApproved) {
 			$("#spin-text").text("SPIN");
 			$("#spin-text-10").text("SPIN X 10");
 		}
 		else {
 			$("#spin-text").text("APPROVE");
 			$("#spin-text-10").text("APPROVE");
+		}
+		if (isDomoMode) {
+			$("#spin-text").text("SPIN");
+			$("#spin-text-10").text("SPIN X 10");
 		}
 	}).catch((e) => {
 		console.log(e)
