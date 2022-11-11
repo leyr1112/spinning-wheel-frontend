@@ -791,7 +791,7 @@ function refreshData() {
 			return;
 		}
 		else {
-			$('.history-list').css('display', 'flex')
+			$('.history-list').css('display', 'none')
 			for (let index = 1; index < length; index++) {
 				bettingContract.methods.prizeHistory(length - 1).call().then(historyData => {
 					$('#history' + index).css('display', 'flex');
