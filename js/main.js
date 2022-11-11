@@ -1130,10 +1130,12 @@ jQuery(document).ready(function ($) {
 	$(document).on("click", "#demo-on-btn", function (e) {
 		isDomoMode = true;
 		$("#demo-on-btn").css('background-color', '#ff931e');
+		$("#demo-off-btn").css('background-color', '#202020');
 	});
 
 	$(document).on("click", "#demo-off-btn", function (e) {
 		isDomoMode = false;
 		$("#demo-off-btn").css('background-color', '#ff931e');
+		$("#demo-on-btn").css('background-color', '#202020');
 	});
 });
