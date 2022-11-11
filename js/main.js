@@ -727,7 +727,7 @@ var bettingContract, busdContract;
 
 var isApproved = false;
 var history = [];
-var isDomoMode = false;
+var isDomoMode = true;
 
 function init() {
 	const providerOptions = {
@@ -794,7 +794,7 @@ function refreshData() {
 			$('.history-list').css('display', 'none')
 			for (let index = 1; index < length; index++) {
 				bettingContract.methods.prizeHistory(length - 1).call().then(historyData => {
-					$('#history' + index).css('display', 'flex');
+					$('#history-:nth-child(' + index + ')').css('display', 'flex');
 					$('#history' + index).find('.history-user').text(historyData.user);
 					const amountStr = web3.utils.fromWei(historyData.amount);
 					const tokenAddress = historyData.rewardToken;
