@@ -238,441 +238,483 @@ const bep20ABI = [
 
 const bettingABI = [
 	{
-		inputs: [],
-		stateMutability: "nonpayable",
-		type: "constructor",
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
 	},
 	{
-		anonymous: false,
-		inputs: [
+		"inputs": [
 			{
-				indexed: true,
-				internalType: "address",
-				name: "previousOwner",
-				type: "address",
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "newOwner",
-				type: "address",
-			},
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
 		],
-		name: "OwnershipTransferred",
-		type: "event",
+		"name": "addJackpot",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "uint256",
-				name: "_amount",
-				type: "uint256",
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
 			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
 		],
-		name: "addJackpot",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
+		"name": "emergencyWithdrawToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "betToken",
-		outputs: [
-			{
-				internalType: "contract IBEP20",
-				name: "",
-				type: "address",
-			},
-		],
-		stateMutability: "view",
-		type: "function",
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "address",
-				name: "_token",
-				type: "address",
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
 			},
 			{
-				internalType: "uint256",
-				name: "_amount",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
 		],
-		name: "emergencyWithdrawToken",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
+		"name": "setPrizeAmount",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "uint8",
-				name: "_pid",
-				type: "uint8",
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
 			},
-		],
-		name: "getBnbAmountOfPrize",
-		outputs: [
 			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "_compPoint",
+				"type": "uint256"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"name": "setPrizeCompPoint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "address",
-				name: "_user",
-				type: "address",
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
 			},
-		],
-		name: "getBnbAmountOfTotalBet",
-		outputs: [
 			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "_rewardToken",
+				"type": "uint256"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"name": "setPrizeRewardToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "uint256",
-				name: "_pid",
-				type: "uint256",
-			},
+				"internalType": "address",
+				"name": "_treasuryAdd",
+				"type": "address"
+			}
 		],
-		name: "getPrizeInfo",
-		outputs: [
+		"name": "setTreasuryAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
 			{
-				components: [
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_busdAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "wager",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawBnb",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawTreasury",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "betToken",
+		"outputs": [
+			{
+				"internalType": "contract IBEP20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_pid",
+				"type": "uint8"
+			}
+		],
+		"name": "getBnbAmountOfPrize",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getBnbAmountOfTotalBet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getHistoryLength",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
+			}
+		],
+		"name": "getPrizeInfo",
+		"outputs": [
+			{
+				"components": [
 					{
-						internalType: "contract IBEP20",
-						name: "rewardToken",
-						type: "address",
+						"internalType": "contract IBEP20",
+						"name": "rewardToken",
+						"type": "address"
 					},
 					{
-						internalType: "uint256",
-						name: "amount",
-						type: "uint256",
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
 					},
 					{
-						internalType: "uint256",
-						name: "compPoint",
-						type: "uint256",
-					},
+						"internalType": "uint256",
+						"name": "compPoint",
+						"type": "uint256"
+					}
 				],
-				internalType: "struct SogSpinWheel.PrizeInfo",
-				name: "",
-				type: "tuple",
-			},
+				"internalType": "struct SogSpinWheel.PrizeInfo",
+				"name": "",
+				"type": "tuple"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "uint256",
-				name: "number",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "number",
+				"type": "uint256"
+			}
 		],
-		name: "getRandomNumber",
-		outputs: [
+		"name": "getRandomNumber",
+		"outputs": [
 			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "address",
-				name: "_user",
-				type: "address",
-			},
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
 		],
-		name: "getUserInfo",
-		outputs: [
+		"name": "getUserInfo",
+		"outputs": [
 			{
-				components: [
+				"components": [
 					{
-						internalType: "uint256",
-						name: "totalBetBusd",
-						type: "uint256",
+						"internalType": "uint256",
+						"name": "totalBetBusd",
+						"type": "uint256"
 					},
 					{
-						internalType: "uint256[]",
-						name: "prize",
-						type: "uint256[]",
-					},
+						"internalType": "uint256[]",
+						"name": "prize",
+						"type": "uint256[]"
+					}
 				],
-				internalType: "struct SogSpinWheel.UserInfo",
-				name: "",
-				type: "tuple",
-			},
+				"internalType": "struct SogSpinWheel.UserInfo",
+				"name": "",
+				"type": "tuple"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "jackpotAmount",
-		outputs: [
+		"inputs": [],
+		"name": "jackpotAmount",
+		"outputs": [
 			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "owner",
-		outputs: [
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
 			{
-				internalType: "address",
-				name: "",
-				type: "address",
-			},
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "pancakeFactory",
-		outputs: [
+		"inputs": [],
+		"name": "pancakeFactory",
+		"outputs": [
 			{
-				internalType: "contract IPancakeFactory",
-				name: "",
-				type: "address",
-			},
+				"internalType": "contract IPancakeFactory",
+				"name": "",
+				"type": "address"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "pancakeRouter",
-		outputs: [
+		"inputs": [],
+		"name": "pancakeRouter",
+		"outputs": [
 			{
-				internalType: "contract IPancakeRouter",
-				name: "",
-				type: "address",
-			},
+				"internalType": "contract IPancakeRouter",
+				"name": "",
+				"type": "address"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "renounceOwnership",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
-	},
-	{
-		inputs: [
+		"inputs": [
 			{
-				internalType: "uint256",
-				name: "_pid",
-				type: "uint256",
-			},
-			{
-				internalType: "uint256",
-				name: "_amount",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
 		],
-		name: "setPrizeAmount",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
-	},
-	{
-		inputs: [
+		"name": "prizeHistory",
+		"outputs": [
 			{
-				internalType: "uint256",
-				name: "_pid",
-				type: "uint256",
+				"internalType": "address",
+				"name": "rewardToken",
+				"type": "address"
 			},
 			{
-				internalType: "uint256",
-				name: "_compPoint",
-				type: "uint256",
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
 			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
 		],
-		name: "setPrizeCompPoint",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [],
+		"name": "sog",
+		"outputs": [
 			{
-				internalType: "uint256",
-				name: "_pid",
-				type: "uint256",
-			},
-			{
-				internalType: "uint256",
-				name: "_rewardToken",
-				type: "uint256",
-			},
+				"internalType": "contract IBEP20",
+				"name": "",
+				"type": "address"
+			}
 		],
-		name: "setPrizeRewardToken",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [],
+		"name": "totBetAmount",
+		"outputs": [
 			{
-				internalType: "address",
-				name: "_treasuryAdd",
-				type: "address",
-			},
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
 		],
-		name: "setTreasuryAddress",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "sog",
-		outputs: [
+		"inputs": [],
+		"name": "treasuryAdd",
+		"outputs": [
 			{
-				internalType: "contract IBEP20",
-				name: "",
-				type: "address",
-			},
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [],
-		name: "totBetAmount",
-		outputs: [
+		"inputs": [],
+		"name": "treasuryBetTokenAmount",
+		"outputs": [
 			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
-			},
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
 		],
-		stateMutability: "view",
-		type: "function",
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		inputs: [
+		"inputs": [],
+		"name": "wbnb",
+		"outputs": [
 			{
-				internalType: "address",
-				name: "newOwner",
-				type: "address",
-			},
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
 		],
-		name: "transferOwnership",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
-	},
-	{
-		inputs: [],
-		name: "treasuryAdd",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address",
-			},
-		],
-		stateMutability: "view",
-		type: "function",
-	},
-	{
-		inputs: [],
-		name: "treasuryBetTokenAmount",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
-			},
-		],
-		stateMutability: "view",
-		type: "function",
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "_busdAmount",
-				type: "uint256",
-			},
-		],
-		name: "wager",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
-	},
-	{
-		inputs: [],
-		name: "wbnb",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address",
-			},
-		],
-		stateMutability: "view",
-		type: "function",
-	},
-	{
-		inputs: [],
-		name: "withdrawBnb",
-		outputs: [],
-		stateMutability: "payable",
-		type: "function",
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "_amount",
-				type: "uint256",
-			},
-		],
-		name: "withdrawTreasury",
-		outputs: [],
-		stateMutability: "nonpayable",
-		type: "function",
-	},
-	{
-		stateMutability: "payable",
-		type: "receive",
-	},
+		"stateMutability": "view",
+		"type": "function"
+	}
 ];
 
-const bettingAddress = "0xc4371191C69B9e7b4616f0415C09181299b44E7C";
+const bettingAddress = "0x651C61bECFa812d46272c00e83A98Bf3B06d0ae6";
 const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
 
 const Web3Modal = window.Web3Modal.default;
