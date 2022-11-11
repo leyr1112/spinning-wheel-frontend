@@ -105,7 +105,7 @@ input[type="submit"]:hover {
 } */
 
 .wheel-standard {
-  background-image: url(https://spinning-wheel-frontend.vercel.app/images/table.png);
+  background-image: url(https://spinning-wheel-frontend.vercel.app/images/table.gif);
   /* background-size: cover; */
   background-repeat: no-repeat;
   background-position: center;
