@@ -714,7 +714,7 @@ const bettingABI = [
 	}
 ];
 
-const bettingAddress = "0x7CAA8679CF501D986a68ABF90B9b34880973eC12";
+const bettingAddress = "0x63dbb500D1243867282A0D248E5207191c4062D1";
 const busdAddress = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";
 
 const Web3Modal = window.Web3Modal.default;
