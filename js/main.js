@@ -238,25 +238,6 @@ const bep20ABI = [
 
 const bettingABI = [
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -293,6 +274,30 @@ const bettingABI = [
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -375,8 +380,17 @@ const bettingABI = [
 		"type": "function"
 	},
 	{
-		"stateMutability": "payable",
-		"type": "receive"
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_busdAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "wager",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -386,7 +400,7 @@ const bettingABI = [
 				"type": "uint256"
 			}
 		],
-		"name": "wager",
+		"name": "wager10",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -412,9 +426,8 @@ const bettingABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
+		"stateMutability": "payable",
+		"type": "receive"
 	},
 	{
 		"inputs": [],
@@ -714,7 +727,7 @@ const bettingABI = [
 	}
 ];
 
-const bettingAddress = "0x0ae23c28dFA3BC39A14929ad582019de05dFee12";
+const bettingAddress = "0x6C6F20A73E9E7f48a9179D01dc5a269bB34DC99d";
 const busdAddress = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";
 
 const Web3Modal = window.Web3Modal.default;
@@ -990,16 +1003,16 @@ function wager(amount) {
 	})
 }
 
-function wager10() {
+function wager10(amount) {
 	swal({
 		type: "info",
 		html: "Confirming...",
 		showConfirmationButton: false
 	});
-	bettingContract.methods.wager10().send({ from: selectedAccount }).then(result => {
+	bettingContract.methods.wager10(amount).send({ from: selectedAccount }).then(result => {
 		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
 			for (let index = 0; index < 10; index++) {
-				const prizeId = result.prize[result.prize.length - index - 1]
+				let prizeId = result.prize[result.prize.length - index - 1]
 				$(".wheel-standard").superWheel(
 					"start",
 					"value",
