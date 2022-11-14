@@ -949,6 +949,10 @@ function roundNum(num) {
 }
 
 function wager(amount) {
+	swal({
+		type: "info",
+		html: "Confirming...",
+	});
 	bettingContract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
 		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
 			const prizeId = result.prize[result.prize.length - 1]
