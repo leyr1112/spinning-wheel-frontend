@@ -714,7 +714,7 @@ const bettingABI = [
 	}
 ];
 
-const bettingAddress = "0x63dbb500D1243867282A0D248E5207191c4062D1";
+const bettingAddress = "0x0ae23c28dFA3BC39A14929ad582019de05dFee12";
 const busdAddress = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";
 
 const Web3Modal = window.Web3Modal.default;
@@ -841,22 +841,22 @@ function refreshData() {
 }
 
 const shortenAccountId = (fullStr) => {
-    const strLen = 30
-    const separator = '...'
+	const strLen = 30
+	const separator = '...'
 
-    if (fullStr?.length <= strLen) return fullStr
+	if (fullStr?.length <= strLen) return fullStr
 
-    const sepLen = separator.length
-    const charsToShow = strLen - sepLen
-    const frontChars = 2
-    const backChars = 4
+	const sepLen = separator.length
+	const charsToShow = strLen - sepLen
+	const frontChars = 2
+	const backChars = 4
 
-    return (
-      fullStr?.substr(0, frontChars) +
-      separator +
-      fullStr?.substr(fullStr?.length - backChars)
-    )
-  }
+	return (
+		fullStr?.substr(0, frontChars) +
+		separator +
+		fullStr?.substr(fullStr?.length - backChars)
+	)
+}
 
 async function loadWeb3() {
 	if (window.ethereum) {
@@ -980,6 +980,32 @@ function wager(amount) {
 				"value",
 				Number(prizeId)
 			);
+		}).catch((e) => {
+			console.log(e)
+		})
+	}).catch((e) => {
+		console.log(e)
+	}).finally(() => {
+		swal.close();
+	})
+}
+
+function wager10() {
+	swal({
+		type: "info",
+		html: "Confirming...",
+		showConfirmationButton: false
+	});
+	bettingContract.methods.wager10().send({ from: selectedAccount }).then(result => {
+		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
+			for (let index = 0; index < 10; index++) {
+				const prizeId = result.prize[result.prize.length - index - 1]
+				$(".wheel-standard").superWheel(
+					"start",
+					"value",
+					Number(prizeId)
+				);
+			}
 		}).catch((e) => {
 			console.log(e)
 		})
@@ -1154,7 +1180,7 @@ jQuery(document).ready(function ($) {
 		}
 		else {
 			if (isApproved) {
-				wager(web3.utils.toWei('10'));
+				wager10();
 			}
 			else {
 				approve()
