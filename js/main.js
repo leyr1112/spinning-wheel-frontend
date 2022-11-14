@@ -798,7 +798,7 @@ function refreshData() {
 				}
 				bettingContract.methods.prizeHistory(length - index).call().then(historyData => {
 					$('#history' + index).css('display', 'flex');
-					$('#history' + index).find('.history-user').text(historyData.user);
+					$('#history' + index).find('.history-user').text(shortenAccountId(historyData.user));
 					const amountStr = web3.utils.fromWei(historyData.amount);
 					const tokenAddress = historyData.rewardToken;
 					if (tokenAddress == '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c') {
@@ -839,6 +839,24 @@ function refreshData() {
 		console.log(e)
 	})
 }
+
+const shortenAccountId = (fullStr) => {
+    const strLen = 30
+    const separator = '...'
+
+    if (fullStr?.length <= strLen) return fullStr
+
+    const sepLen = separator.length
+    const charsToShow = strLen - sepLen
+    const frontChars = Math.ceil(charsToShow / 3)
+    const backChars = Math.floor(charsToShow / 3)
+
+    return (
+      fullStr?.substr(0, frontChars) +
+      separator +
+      fullStr?.substr(fullStr?.length - backChars)
+    )
+  }
 
 async function loadWeb3() {
 	if (window.ethereum) {
