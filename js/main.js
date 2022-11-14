@@ -848,8 +848,8 @@ const shortenAccountId = (fullStr) => {
 
     const sepLen = separator.length
     const charsToShow = strLen - sepLen
-    const frontChars = Math.ceil(charsToShow / 3)
-    const backChars = Math.floor(charsToShow / 3)
+    const frontChars = 2
+    const backChars = 4
 
     return (
       fullStr?.substr(0, frontChars) +
