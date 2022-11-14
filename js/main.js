@@ -1193,7 +1193,7 @@ jQuery(document).ready(function ($) {
 		}
 		else {
 			if (isApproved) {
-				wager10();
+				wager10(web3.utils.toWei('9.5'));
 			}
 			else {
 				approve()
