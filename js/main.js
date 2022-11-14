@@ -777,6 +777,8 @@ function refreshData() {
 		}
 	}).catch((e) => {
 		console.log(e)
+	}).finally(() => {
+		console.log(1)
 	})
 
 	bettingContract.methods.jackpotAmount().call().then(jptAmont => {
