@@ -983,7 +983,6 @@ function wager(amount) {
 	swal({
 		type: "info",
 		html: "Confirming...",
-		showConfirmationButton: false
 	});
 	bettingContract.methods.wager(amount).send({ from: selectedAccount }).then(result => {
 		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
@@ -1007,7 +1006,6 @@ function wager10(amount) {
 	swal({
 		type: "info",
 		html: "Confirming...",
-		showConfirmationButton: false
 	});
 	bettingContract.methods.wager10(amount).send({ from: selectedAccount }).then(result => {
 		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
