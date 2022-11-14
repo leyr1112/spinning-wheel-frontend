@@ -967,7 +967,7 @@ function wager(amount) {
 	}).catch((e) => {
 		console.log(e)
 	}).finally(() => {
-		$(".swal2-popup").modal("hide")
+		swal.close();
 	})
 }
 
