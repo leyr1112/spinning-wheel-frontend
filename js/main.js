@@ -867,7 +867,7 @@ async function fetchAccountData() {
 	// Get connected chain id from Ethereum node
 	const chainId = await web3.eth.getChainId();
 
-	if (chainId !== 56) {
+	if (chainId !== 97) {
 		swal({
 			type: "error",
 			html: "Wrong network!<br />Switch to BSC",
