@@ -727,8 +727,8 @@ const bettingABI = [
 	}
 ];
 
-const bettingAddress = "0x6C6F20A73E9E7f48a9179D01dc5a269bB34DC99d";
-const busdAddress = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";
+const bettingAddress = "0x651C61bECFa812d46272c00e83A98Bf3B06d0ae6";
+const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
 
 const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
@@ -898,7 +898,7 @@ async function fetchAccountData() {
 	// Get connected chain id from Ethereum node
 	const chainId = await web3.eth.getChainId();
 
-	if (chainId !== 97) {
+	if (chainId !== 56) {
 		swal({
 			type: "error",
 			html: "Wrong network!<br />Switch to BSC Testnet",
