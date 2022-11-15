@@ -901,7 +901,7 @@ async function fetchAccountData() {
 	if (chainId !== 97) {
 		swal({
 			type: "error",
-			html: "Wrong network!<br />Switch to BSC",
+			html: "Wrong network!<br />Switch to BSC Testnet",
 		});
 	}
 
