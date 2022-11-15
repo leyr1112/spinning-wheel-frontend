@@ -782,11 +782,11 @@ function refreshData() {
 		isApproved = Number(resultStr) > 0
 		if (isApproved || isDomoMode) {
 			$("#spin-text").text("SPIN");
-			$("#spin-text-10").text("SPIN X 10");
+			// $("#spin-text-10").text("SPIN X 10");
 		}
 		else {
 			$("#spin-text").text("APPROVE");
-			$("#spin-text-10").text("APPROVE");
+			// $("#spin-text-10").text("APPROVE");
 		}
 	}).catch((e) => {
 		console.log(e)
@@ -1002,35 +1002,35 @@ function wager(amount) {
 	})
 }
 
-function wager10(amount) {
-	swal({
-		type: "info",
-		html: "Confirming...",
-	});
-	bettingContract.methods.wager10(amount).send({ from: selectedAccount }).then(result => {
-		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
-			for (let index = 0; index < 10; index++) {
-				let prizeId = result.prize[result.prize.length - index - 1]
-				$(".wheel-standard").superWheel(
-					"start",
-					"value",
-					Number(prizeId)
-				);
-			}
-		}).catch((e) => {
-			console.log(e)
-		})
-	}).catch((e) => {
-		console.log(e)
-	}).finally(() => {
-		swal.close();
-	})
-}
+// function wager10(amount) {
+// 	swal({
+// 		type: "info",
+// 		html: "Confirming...",
+// 	});
+// 	bettingContract.methods.wager10(amount).send({ from: selectedAccount }).then(result => {
+// 		bettingContract.methods.getUserInfo(selectedAccount).call().then(result => {
+// 			for (let index = 0; index < 10; index++) {
+// 				let prizeId = result.prize[result.prize.length - index - 1]
+// 				$(".wheel-standard").superWheel(
+// 					"start",
+// 					"value",
+// 					Number(prizeId)
+// 				);
+// 			}
+// 		}).catch((e) => {
+// 			console.log(e)
+// 		})
+// 	}).catch((e) => {
+// 		console.log(e)
+// 	}).finally(() => {
+// 		swal.close();
+// 	})
+// }
 
 function approve() {
 	busdContract.methods.approve(bettingAddress, '1000000000000000000000000000000000000000').send({ from: selectedAccount }).then(result => {
 		$("#spin-text").text("SPIN");
-		$("#spin-text-10").text("SPIN X 10");
+		// $("#spin-text-10").text("SPIN X 10");
 	}).catch((e) => {
 		console.log(e)
 	})
@@ -1180,24 +1180,24 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	$(document).on("click", ".wheel-standard-spin-button-10", function (e) {
-		const web3 = new Web3(provider);
-		if (isDomoMode) {
-			$(".wheel-standard").superWheel(
-				"start",
-				"value",
-				Math.floor(Math.random() * 12)
-			);
-		}
-		else {
-			if (isApproved) {
-				wager10(web3.utils.toWei('9.5'));
-			}
-			else {
-				approve()
-			}
-		}
-	});
+	// $(document).on("click", ".wheel-standard-spin-button-10", function (e) {
+	// 	const web3 = new Web3(provider);
+	// 	if (isDomoMode) {
+	// 		$(".wheel-standard").superWheel(
+	// 			"start",
+	// 			"value",
+	// 			Math.floor(Math.random() * 12)
+	// 		);
+	// 	}
+	// 	else {
+	// 		if (isApproved) {
+	// 			wager10(web3.utils.toWei('9.5'));
+	// 		}
+	// 		else {
+	// 			approve()
+	// 		}
+	// 	}
+	// });
 
 	$(".wheel-standard").superWheel("onStep", function (results) {
 		if (typeof tick.currentTime !== "undefined") tick.currentTime = 0;
@@ -1212,7 +1212,7 @@ jQuery(document).ready(function ($) {
 			html: '<b>' + results.message + '</b>',
 			confirmButtonText: "SPIN AGAIN",
 			footer:
-				"<b>Spin x 10 to win <span style='color: #ff931e;'>$12000</span> Jackpot</b>",
+				"<b>Spin to win <span style='color: #ff931e;'>$12000</span> Jackpot</b>",
 		});
 	});
 
